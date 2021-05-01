@@ -1,0 +1,91 @@
+<!-- Navigation -->
+<app-navbar></app-navbar>
+
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="/assets/img/log/registernow.jpg" style="height: 100%; width: 101%; margin: 0 0 px" />
+
+                </div>
+                <div class="col-lg-7">
+                    <div class="p-5" style="margin-top: 70px">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        placeholder="First Name" formControlName="firstname">
+                                    <div class="text-danger" *ngIf="firstname?.touched && firstname?.invalid">
+                                        <div *ngIf="firstname?.errors?.required">Firstname is required </div>
+                                        <div *ngIf="firstname?.errors?.pattern">Invalid Firstname</div>
+                                        <div *ngIf="firstname?.errors?.minlength">Firstname must contains 3 letters at
+                                            least</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        placeholder="Last Name" formControlName="lastname">
+                                    <div class="text-danger" *ngIf="lastname?.touched && lastname?.invalid">
+                                        <div *ngIf="lastname?.errors?.required">Lastname is required </div>
+                                        <div *ngIf="lastname?.errors?.pattern">Invalid Lastname</div>
+                                        <div *ngIf="lastname?.errors?.minlength">Lastname must contains 3 letters at
+                                            least</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    placeholder="Email Address" formControlName="email">
+                                <div class="text-danger" *ngIf="email?.touched && email?.invalid">
+                                    <div *ngIf="email?.errors?.required">Email is required </div>
+                                    <div *ngIf="email?.errors?.email">Invalid Email</div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user"
+                                        id="exampleInputPassword" placeholder="Password" formControlName="password">
+                                    <div class="text-danger" *ngIf="password?.touched && password?.invalid">
+                                        <div *ngIf="password?.errors?.required">Password is required </div>
+                                        <div *ngIf="password?.errors?.minlength">Invalid password</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user"
+                                        id="exampleRepeatPassword" placeholder="Repeat Password"
+                                        formControlName="confirmpwd">
+                                    <div class="text-danger" *ngIf="password?.touched && password?.invalid">
+                                        <div *ngIf="password?.errors?.required">Password is required </div>
+                                        <div *ngIf="password?.errors?.minlength">Invalid password</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block"
+                                [disabled]="registerForm.invalid">
+                                Register Account
+                            </button>
+
+
+
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" routerLink="/login">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
