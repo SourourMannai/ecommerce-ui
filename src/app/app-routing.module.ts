@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/private/shared/dashboard/dashbo
 import { TopbarComponent } from './components/private/shared/topbar/topbar.component';
 import { SidebarComponent } from './components/private/shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './components/private/admin/categories/categories-list/categories-list.component';
+import { ProductListComponent } from './components/private/admin/products/product-list/product-list.component';
 
 //Routes declaration
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: "admin/category/list",
     component: CategoriesListComponent
+  },
+  {
+    path: "admin/product/list",
+    component: ProductListComponent
   },
   //PAGE 404 
   {

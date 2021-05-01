@@ -16,7 +16,8 @@ import { TopbarComponent } from './components/private/shared/topbar/topbar.compo
 import { SidebarComponent } from './components/private/shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './components/private/admin/categories/categories-list/categories-list.component'
 
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { ProductListComponent } from './components/private/admin/products/product-list/product-list.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from "@angular/common/http"
     DashboardComponent,
     TopbarComponent,
     SidebarComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

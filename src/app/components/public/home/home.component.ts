@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private cs: CategoryService) { }
+  public categories: any[] = []
+  public products:   any[] = []
+  constructor(private cs: CategoryService, private ps:ProductService) { }
 
   ngOnInit(): void {
     this.cs
@@ -18,48 +20,16 @@ export class HomeComponent implements OnInit {
           this.categories = result
         }
       )
-  }
-  /*
-    title = 'Tunisia';
-    users = ['Sourour', 'Ayoub', 'Islem', 'Molk', 'Chaima', 'Saif']
-    course = {
-      name: 'angular',
-      duration: '350 H',
-      price: 10
-    }
-    products = [
-      {
-        name:'Lait',
-        price: 1350
+    this.ps.getAllProducts().subscribe(
+      (res) => {
+        this.products = res
       },
-      {
-        name:'Yaourt',
-        price: 500
-      },
-      {
-        name:'Dattes',
-        price: 12000
+      (err) => {
+        console.log(err)
       }
-    ]
-  
-    deleteProduct(index: number){
-      this.products.splice(index, 1);
-    }
-  */
+    )
+  }
+  getProductByCategory(){
 
-  public categories: any[] = []
-
-  products = [
-    {
-      id: 4,
-      idCategory: 2,
-      image: "http://placehold.it/700x400",
-      name: "Tablet Lenovo",
-      price: "1600DT",
-      description: "C'est une Tablet Lenovo, 15 pouce, facile à emporter"
-    }
-  ]
-  getCategoryById(id: number) {
-    console.log(id);
   }
 }
