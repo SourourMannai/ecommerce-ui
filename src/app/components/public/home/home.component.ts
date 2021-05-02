@@ -8,11 +8,16 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
   public categories: any[] = []
-  public products:   any[] = []
-  constructor(private cs: CategoryService, private ps:ProductService) { }
+
+  public products: any[] = []
+  public productsToFilter: any[] = []
+
+  constructor(private cs: CategoryService, private ps: ProductService) { }
 
   ngOnInit(): void {
+
     this.cs
       .getAllCategories()
       .subscribe(
@@ -20,16 +25,26 @@ export class HomeComponent implements OnInit {
           this.categories = result
         }
       )
+
     this.ps.getAllProducts().subscribe(
       (res) => {
         this.products = res
+        this.productsToFilter = res
       },
       (err) => {
         console.log(err)
       }
     )
-  }
-  getProductByCategory(){
 
   }
+
+  getProductsByCategory(categoryId: any) {
+
+    categoryId == "all" ? this.products = this.productsToFilter :
+      this.products = this.productsToFilter.filter((p) => {
+        return p.category_id == categoryId
+      })
+
+  }
+
 }

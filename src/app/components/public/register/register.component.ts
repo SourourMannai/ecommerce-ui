@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { validate } from 'json-schema';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,10 +10,16 @@ import { validate } from 'json-schema';
 })
 
 export class RegisterComponent implements OnInit {
+  
   public registerForm: FormGroup
   /*lier FormGroup par ses formControls
    via le FormBuiler (à traver la fonction 'group') */
-  constructor(private fb: FormBuilder) {
+
+  constructor(
+    private fb: FormBuilder,
+    private us: UserService,
+    private router: Router) {
+
     let registerControls = {
       firstname: new FormControl("", [Validators.required, Validators.minLength(3), Validators.pattern('[A-Z][a-z][a-z][a-z ]*')]),
       lastname: new FormControl("", [Validators.required, Validators.minLength(3), Validators.pattern('[A-Z][a-z][a-z][a-z ]*')]),
@@ -33,7 +41,13 @@ export class RegisterComponent implements OnInit {
 
 
   registerUser() {
-    console.log(this.registerForm.value)
+    let data = this.registerForm.value
+
+    this.us.registerUser(data).subscribe(
+      result => this.router.navigateByUrl('/login'),
+      err => console.log(err)
+    )
+
   }
 
 }

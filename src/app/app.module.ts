@@ -18,6 +18,7 @@ import { CategoriesListComponent } from './components/private/admin/categories/c
 
 import { HttpClientModule } from "@angular/common/http";
 import { ProductListComponent } from './components/private/admin/products/product-list/product-list.component'
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ProductListComponent } from './components/private/admin/products/produc
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
